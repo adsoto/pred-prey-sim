@@ -75,7 +75,7 @@ X0(6,1) = p.pred.theta0;
 
 % Intialize global status on a capture
 % Declare global variable
-    %global stopsim captured
+%     global captured %stopsim 
 stopsim  = 0;
 captured = 0;
 
@@ -122,12 +122,12 @@ end
 function [value, isterminal, direction] = capture_fnc(~,X)
     
     % Declare global variable
-    global stopsim %captured
+    global stopsim 
     
     % the event occurs when distance is less than capture distance
-    %distance = hypot(X(4)-X(1),X(5)-X(2));
+%     distance = hypot(X(4)-X(1),X(5)-X(2));
     if stopsim %|| (X(4)>X(1))
-        %distance < p.param.d_capture
+%     if distance < p.param.d_capture
         value      = 0;
         isterminal = 1;         % tells ode45 to stop integration
         direction  = 0;

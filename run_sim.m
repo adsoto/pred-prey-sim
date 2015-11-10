@@ -8,7 +8,7 @@ function run_sim
 p.param.sL = 1;
 p.param.sT = 1;
 
-p.param.t_span = [0 30];
+p.param.t_span = [0 50];
 
 %% Run simulation
 

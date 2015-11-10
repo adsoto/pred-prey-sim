@@ -31,11 +31,11 @@ elseif strcmp(sim_type,'Weihs')
     s = behavior('Weihs', p, s, t, X);
     
 elseif strcmp(sim_type,'Weihs, acceleration')
-    % Set predator and prey behavior for Weihs situation
+    % Set predator and prey behavior for Weihs situation w/ acceleration
     s = behavior('Weihs, acceleration', p, s, t, X);
     
 elseif strcmp(sim_type,'Weihs, survive')
-    % Set predator and prey behavior
+    % Set predator and prey behavior for Weihs w/ capture check
     s = behavior('Weihs, survive', p, s, t, X);
     
     % Determine whether prey is captured
@@ -167,7 +167,7 @@ case 'Initialize'
     s.stopsim = 0;
 
     % Reset random number generator
-    rng(1);
+%     rng(1);
     
     
 case 'Body positions' 
@@ -199,6 +199,9 @@ case 'Prey'
     
     % Prey speed (fixed)      
     s.prey.spd = p.prey.spd0;
+    
+    % prey initial orientation
+    s.prey.theta0 = p.prey.theta0;
     
     % Max distance of body from origin
     body_dist_prey = max(hypot(xPrey, yPrey));
@@ -260,7 +263,7 @@ case 'Prey'
         if s.prey.escapeOn
             %stimTime
             [s.prey.omega, s.prey.spd] = prey_escape(t, s.prey.stimTime,...
-                p.prey, 0, 0, s.prey.dirEsc,'full');
+                p.prey, s.prey.theta0, s.prey.spd, s.prey.dirEsc,'full');
         else
             [s.prey.omega, s.prey.tSccd, s.prey.dirSccd, s.prey.onSccd] = ...
                 foraging(p.prey, s.prey.tSccd, t, s.prey.dirSccd,...

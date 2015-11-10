@@ -37,13 +37,13 @@ d.param.sim_type = '';
 %% Prey parameters  
 
 % Initial body position & orientation 
-p.prey.x0           = 2e-2;      % m          
+p.prey.x0           = -1e-2;      % m          
 d.prey.x0           = 'L';
 
 p.prey.y0           = 0; %-1e-2;      % m    
 d.prey.y0           = 'L';
 
-p.prey.theta0         = (180-30)/180*pi; % rad    
+p.prey.theta0         = (90-60)/180*pi; % rad    
 d.prey.theta0         = '';
 
 % Initial speed
@@ -56,11 +56,11 @@ p.prey.thrshEscape    = 1e-2;       % m
 d.prey.thrshEscape    = 'L';
 
 % speed during escape response
-p.prey.spdEscape      = 5e-2;       % m/s  
+p.prey.spdEscape      = 3e-2;       % m/s  
 d.prey.spdEscape      = 'L/T';
 
 % turning rate during escape
-p.prey.rotSpdEscape   = 35;         % rad/s
+p.prey.rotSpdEscape   = 25;         % rad/s
 d.prey.rotSpdEscape   = '1/T';
 
 p.prey.spdResp        = 2e-2;       % m/s
@@ -100,7 +100,7 @@ p.prey.sccd_omega      = 4;         % rad/s
 d.prey.sccd_omega      = '1/T';
 
 % Peak rate of rotation encounter with wall
-p.prey.wall_omega       = 20;         % rad/s
+p.prey.wall_omega       = 30;         % rad/s
 d.prey.wall_omega       = '1/T';
 
 % Proportion region beyond head for responding to walls
@@ -117,7 +117,7 @@ d.pred.x0             = 'L';
 p.pred.y0               = 0e-2;         % m      
 d.pred.y0               = 'L';
 
-p.pred.theta0           = 3*pi/4;      % rad  
+p.pred.theta0           = 1*pi/4;      % rad  
 d.pred.theta0           = '';
 
 % Initial speed
@@ -133,11 +133,11 @@ p.pred.sccd_prd         = 0.5;       % s
 d.pred.sccd_prd         = 'T';
 
 % Peak rate of rotation during saccade
-p.pred.sccd_omega       = 2;         % rad/s
+p.pred.sccd_omega       = 3;         % rad/s
 d.pred.sccd_omega       = '1/T';
 
 % Peak rate of rotation encounter with wall
-p.pred.wall_omega       = 10;         % rad/s
+p.pred.wall_omega       = 6;         % rad/s
 d.pred.wall_omega       = '1/T';
 
 % Width of head
@@ -203,3 +203,8 @@ d.pred.vis_thresh = '';
 
 p.param.max_step = p.pred.sccd_prd/25;
 d.param.max_step = 'T';
+
+
+% capture distance threshold
+p.param.d_capture = 1e-5;       % m
+d.param.d_capture = 'L';
